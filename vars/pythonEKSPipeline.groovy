@@ -23,8 +23,7 @@ def call (Map configMap){
             stage('Read Version') {
                 steps {
                     script{
-                        def pom = readMavenPom file: 'pom.xml'
-                        appVersion = pom.version
+                        appVersion = readFile(file: 'version')
                         echo "app version: ${appVersion}"
                     }
                 }
@@ -33,7 +32,7 @@ def call (Map configMap){
                 steps {
                     script{
                         sh """
-                            mvn clean package
+                            pip3 install -r requirements.txt
                         """
                     }
                 }
@@ -75,7 +74,7 @@ def call (Map configMap){
                 }
                 environment {
                     GITHUB_OWNER = 'NagineniHari'
-                    GITHUB_REPO  = 'Shipping'
+                    GITHUB_REPO  = 'Payment'
                     GITHUB_API   = 'https://api.github.com'
                     GITHUB_TOKEN = credentials('GITHUB_TOKEN')
                 }
