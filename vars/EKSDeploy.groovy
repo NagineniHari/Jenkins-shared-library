@@ -23,7 +23,7 @@ def call (Map configMap){
 
         // Deployment section
         stages {
-            stage('Deploy') {
+          stage('Deploy') {
                 steps {
                     script{
                         withAWS(region:'us-east-1',credentials:'aws-creds') {
@@ -38,7 +38,7 @@ def call (Map configMap){
                     }
                 }  }
         
-            stage('Functional Testing'){
+           stage('Functional Testing'){
                 // when{
                 //     expression { deploy_to == "dev" }
                 // }
@@ -50,67 +50,69 @@ def call (Map configMap){
                     }
                 }
             }
-        }
-
+         }
+            }
         post{
-            always{
-                echo 'I will always say Hello again!'
-                cleanWs()
-            }
-            success {
-                    //            script {
-                    //     withCredentials([string(credentialsId: 'slack-token', variable: 'SLACK_WEBHOOK')]) {
+                always{
+                    echo 'I will always say Hello again!'
+                    cleanWs()
+                }
+                success {
+                        //            script {
+                        //     withCredentials([string(credentialsId: 'slack-token', variable: 'SLACK_WEBHOOK')]) {
 
-                    //         def payload = """
-                    //         {
-                    //         "attachments": [
-                    //             {
-                    //             "color": "#2eb886",
-                    //             "title": "✅ Jenkins Build Successful",
-                    //             "fields": [
-                    //                 {
-                    //                 "title": "Job Name",
-                    //                 "value": "${env.JOB_NAME}",
-                    //                 "short": true
-                    //                 },
-                    //                 {
-                    //                 "title": "Build Number",
-                    //                 "value": "${env.BUILD_NUMBER}",
-                    //                 "short": true
-                    //                 },
-                    //                 {
-                    //                 "title": "Status",
-                    //                 "value": "SUCCESS",
-                    //                 "short": true
-                    //                 },
-                    //                 {
-                    //                 "title": "Build URL",
-                    //                 "value": "${env.BUILD_URL}",
-                    //                 "short": false
-                    //                 }
-                    //             ],
-                    //             "footer": "Jenkins CI",
-                    //             "ts": ${System.currentTimeMillis() / 1000}
-                    //             }
-                    //         ]
-                    //         }
-                    //         """
+                        //         def payload = """
+                        //         {
+                        //         "attachments": [
+                        //             {
+                        //             "color": "#2eb886",
+                        //             "title": "✅ Jenkins Build Successful",
+                        //             "fields": [
+                        //                 {
+                        //                 "title": "Job Name",
+                        //                 "value": "${env.JOB_NAME}",
+                        //                 "short": true
+                        //                 },
+                        //                 {
+                        //                 "title": "Build Number",
+                        //                 "value": "${env.BUILD_NUMBER}",
+                        //                 "short": true
+                        //                 },
+                        //                 {
+                        //                 "title": "Status",
+                        //                 "value": "SUCCESS",
+                        //                 "short": true
+                        //                 },
+                        //                 {
+                        //                 "title": "Build URL",
+                        //                 "value": "${env.BUILD_URL}",
+                        //                 "short": false
+                        //                 }
+                        //             ],
+                        //             "footer": "Jenkins CI",
+                        //             "ts": ${System.currentTimeMillis() / 1000}
+                        //             }
+                        //         ]
+                        //         }
+                        //         """
 
-                    //         sh """
-                    //         curl -X POST \
-                    //         -H 'Content-type: application/json' \
-                    //         --data '${payload}' \
-                    //         ${SLACK_WEBHOOK}
-                    //         """
-                    //     }
-                    // }
-            }
-            failure {
-                echo 'I will run if failure'
-            }
-            aborted {
-                echo 'pipeline is aborted'
-            }
+                        //         sh """
+                        //         curl -X POST \
+                        //         -H 'Content-type: application/json' \
+                        //         --data '${payload}' \
+                        //         ${SLACK_WEBHOOK}
+                        //         """
+                        //     }
+                        // }
+                }
+                failure {
+                    echo 'I will run if failure'
+                }
+                aborted {
+                    echo 'pipeline is aborted'
+                }
         }
+
     }
 }
+    
