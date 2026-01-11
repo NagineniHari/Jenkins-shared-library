@@ -41,7 +41,7 @@ def call (Map configMap){
                         """
                     }
                 }
-            } 
+            
 
         }
             stage('Functional Testing'){
