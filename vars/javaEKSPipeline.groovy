@@ -1,7 +1,7 @@
 // call is the default function name
 def call (Map configMap){
     pipeline {
-    // These are pre-build sections
+     // These are pre-build sections
         agent {
             node {
                 label 'AGENT-1' //roboshop-java
