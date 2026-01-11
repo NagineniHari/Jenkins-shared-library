@@ -42,7 +42,8 @@ def call (Map configMap){
                     }
                 }
             
-        
+
+        }
             stage('Functional Testing'){
                 // when{
                 //     expression { deploy_to == "dev" }
@@ -55,7 +56,8 @@ def call (Map configMap){
                     }
                 }
             }
-            
+    }
+
     post{
         always{
             echo 'I will always say Hello again!'
@@ -116,7 +118,5 @@ def call (Map configMap){
             echo 'pipeline is aborted'
         }
     }
- 
- }
- 
-  }
+}   
+}
