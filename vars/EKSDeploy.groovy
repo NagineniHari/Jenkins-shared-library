@@ -1,12 +1,12 @@
 def call (Map configMap){
- pipeline {
+pipeline {
     // These are pre-build sections
-    agent {
-        node {
+agent {
+node {
             label 'AGENT-1'
         }
     }
-    environment {
+environment {
         COURSE = "Jenkins"
         appVersion = configMap.get("appVersion")
         ACC_ID = "996058207546"
@@ -15,7 +15,7 @@ def call (Map configMap){
         deploy_to = configMap.get("deploy_to")
         REGION = "us-east-1"
     }
-    options {
+options {
         timeout(time: 30, unit: 'MINUTES') 
         disableConcurrentBuilds()
         ansiColor('xterm')
@@ -26,7 +26,7 @@ def call (Map configMap){
     } */
 
     // Deployment section
-        stages {
+stages {
             stage('Deploy') {
                 steps {
                     script{
@@ -39,11 +39,9 @@ def call (Map configMap){
                         helm upgrade --install ${COMPONENT} -f values-${deploy_to}.yaml -n ${PROJECT} --atomic --wait --timeout=10m .
                 
                         """
+                       }
                     }
                 }
-            
-
-        }
             stage('Functional Testing'){
                 // when{
                 //     expression { deploy_to == "dev" }
@@ -56,9 +54,9 @@ def call (Map configMap){
                     }
                 }
             }
-    }
+        }
 
-    post{
+post{
         always{
             echo 'I will always say Hello again!'
             cleanWs()
@@ -118,5 +116,6 @@ def call (Map configMap){
             echo 'pipeline is aborted'
         }
     }
-}   
+    }   
+}
 }
