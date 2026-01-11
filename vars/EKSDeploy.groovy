@@ -23,7 +23,7 @@ def call (Map configMap){
 
         // Deployment section
         stages {
-          stage('Deploy') {
+             stage('Deploy') {
                 steps {
                     script{
                         withAWS(region:'us-east-1',credentials:'aws-creds') {
@@ -38,7 +38,7 @@ def call (Map configMap){
                     }
                 }  }
         
-           stage('Functional Testing'){
+             stage('Functional Testing'){
                 // when{
                 //     expression { deploy_to == "dev" }
                 // }
@@ -112,7 +112,6 @@ def call (Map configMap){
                     echo 'pipeline is aborted'
                 }
         }
-
     }
 }
     
