@@ -21,12 +21,6 @@ def call (Map configMap) {
             disableConcurrentBuilds()
             ansiColor('xterm')
          }
-         /* 
-         parameters {
-            string(name: 'appVersion', description: 'Which app version you want to deploy')
-            choice(name: 'deploy_to', choices: ['dev', 'qa', 'prod'], description: 'Pick something')
-          } */
-
          // Deployment section
          stages {
                 stage('Deploy') {
@@ -121,7 +115,6 @@ def call (Map configMap) {
   
         }
    }
-
 }
  
  
