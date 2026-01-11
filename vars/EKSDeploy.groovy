@@ -1,13 +1,13 @@
- def call (Map configMap) {
-  pipeline {
-        // These are pre-build sections
-     agent {
+def call (Map configMap) {
+    pipeline {
+    // These are pre-build sections
+         agent {
 
-     node {
+             node {
                 label 'AGENT-1'
-     }
-           }
-     environment {
+             }
+         }
+         environment {
             COURSE = "Jenkins"
             appVersion = configMap.get("appVersion")
             ACC_ID = "996058207546"
@@ -15,19 +15,20 @@
             COMPONENT = configMap.get("component")
             deploy_to = configMap.get("deploy_to")
             REGION = "us-east-1"
-     }
-      options {
+         }
+         options {
             timeout(time: 30, unit: 'MINUTES') 
             disableConcurrentBuilds()
             ansiColor('xterm')
-     }
-     /*         parameters {
+         }
+         /* 
+         parameters {
             string(name: 'appVersion', description: 'Which app version you want to deploy')
             choice(name: 'deploy_to', choices: ['dev', 'qa', 'prod'], description: 'Pick something')
-         } */
+          } */
 
-        // Deployment section
-     stages {
+         // Deployment section
+         stages {
                 stage('Deploy') {
                     steps {
                         script{
@@ -56,8 +57,8 @@
                     }
                 }
             }
-     }
-   post{
+         }
+         post{
             always{
                 echo 'I will always say Hello again!'
                 cleanWs()
@@ -118,10 +119,10 @@
             }
       
   
-       }
-  }
+        }
+   }
 
- }
+}
  
  
    
