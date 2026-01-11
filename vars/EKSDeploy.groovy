@@ -1,6 +1,6 @@
 def call (Map configMap) {
-    pipeline {
-    // These are pre-build sections
+     pipeline {
+      // These are pre-build sections
          agent {
 
              node {
