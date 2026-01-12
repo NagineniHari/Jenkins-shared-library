@@ -51,8 +51,7 @@ def call (Map configMap){
                 }
             }
              }
-
-        }    
+   
         post{
                 always{
                     echo 'I will always say Hello again!'
@@ -69,5 +68,6 @@ def call (Map configMap){
                     echo 'pipeline is aborted'
                 }
         }
+    }
     }
     
