@@ -26,29 +26,29 @@ def call (Map configMap){
                 steps {
                     script{
                         withAWS(region:'us-east-1',credentials:'aws-creds') {
-                        sh """
-                        set -e
-                        aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
-                        kubectl get nodes
-                        sed -i "s/IMAGE_VERSION/${appVersion}/g" values.yaml
-                        helm upgrade --install ${COMPONENT} -f values-${deploy_to}.yaml -n ${PROJECT} --atomic --wait --timeout=10m --rollback-on-failure=false .
+                        // sh """
+                        // set -e
+                        // aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
+                        // kubectl get nodes
+                        // sed -i "s/IMAGE_VERSION/${appVersion}/g" values.yaml
+                        // helm upgrade --install ${COMPONENT} -f values-${deploy_to}.yaml -n ${PROJECT} --atomic --wait --timeout=10m --rollback-on-failure=false .
                 
-                        """
+                        // """
 
-                        //    sh """
-                        //    set -e
-                        //    aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
-                        //    kubectl get nodes
+                           sh """
+                           set -e
+                           aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
+                           kubectl get nodes
 
-                        //    helm upgrade --install ${COMPONENT} \
-                        //    -n ${PROJECT} \
-                        //    -f values-${deploy_to}.yaml \
-                        //    --set deployment.imageVersion=${appVersion} \
-                        //    --wait \
-                        //    --timeout=10m \
-                        //    --rollback-on-failure=false .
+                           helm upgrade --install ${COMPONENT} \
+                           -n ${PROJECT} \
+                           -f values-${deploy_to}.yaml \
+                           --set deployment.imageVersion=${appVersion} \
+                           --wait \
+                           --timeout=10m \
+                           --rollback-on-failure=false .
                                 
-                        //     """
+                            """
                     }
               
                 }  }
