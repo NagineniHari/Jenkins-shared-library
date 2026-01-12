@@ -34,7 +34,7 @@ def call (Map configMap){
                         // helm upgrade --install ${COMPONENT} -f values-${deploy_to}.yaml -n ${PROJECT} --atomic --wait --timeout=10m .
                 
                         // """
-                        
+
                            sh """
                            set -e
                            aws eks update-kubeconfig --region ${REGION} --name ${PROJECT}-${deploy_to}
@@ -46,7 +46,7 @@ def call (Map configMap){
                            --set deployment.imageVersion=${appVersion} \
                            --wait \
                            --timeout=10m \
-                           --rollback-on-failure=false \
+                           --rollback-on-failure=false
                                 
                             """
                     }
