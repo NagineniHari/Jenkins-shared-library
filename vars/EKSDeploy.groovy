@@ -37,6 +37,7 @@ def call (Map configMap){
                     }
               
                 }  }
+             }
              stage('Functional Testing'){
                 // when{
                 //     expression { deploy_to == "dev" }
@@ -69,5 +70,4 @@ def call (Map configMap){
                 }
         }
     }
-}
     
