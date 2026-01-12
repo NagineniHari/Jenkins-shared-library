@@ -58,6 +58,7 @@ def call (Map configMap){
                     cleanWs()
                 }
                 success {
+                     echo 'I will run if success'
                         //            script {
                         //     withCredentials([string(credentialsId: 'slack-token', variable: 'SLACK_WEBHOOK')]) {
 
