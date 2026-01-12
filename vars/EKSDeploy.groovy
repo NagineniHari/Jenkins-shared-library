@@ -20,7 +20,6 @@ def call (Map configMap){
             disableConcurrentBuilds()
             ansiColor('xterm')
         }
-
         // Deployment section
         stages {
              stage('Deploy') {
@@ -60,52 +59,7 @@ def call (Map configMap){
                 }
                 success {
                      echo 'I will run if success'
-                        //            script {
-                        //     withCredentials([string(credentialsId: 'slack-token', variable: 'SLACK_WEBHOOK')]) {
-
-                        //         def payload = """
-                        //         {
-                        //         "attachments": [
-                        //             {
-                        //             "color": "#2eb886",
-                        //             "title": "✅ Jenkins Build Successful",
-                        //             "fields": [
-                        //                 {
-                        //                 "title": "Job Name",
-                        //                 "value": "${env.JOB_NAME}",
-                        //                 "short": true
-                        //                 },
-                        //                 {
-                        //                 "title": "Build Number",
-                        //                 "value": "${env.BUILD_NUMBER}",
-                        //                 "short": true
-                        //                 },
-                        //                 {
-                        //                 "title": "Status",
-                        //                 "value": "SUCCESS",
-                        //                 "short": true
-                        //                 },
-                        //                 {
-                        //                 "title": "Build URL",
-                        //                 "value": "${env.BUILD_URL}",
-                        //                 "short": false
-                        //                 }
-                        //             ],
-                        //             "footer": "Jenkins CI",
-                        //             "ts": ${System.currentTimeMillis() / 1000}
-                        //             }
-                        //         ]
-                        //         }
-                        //         """
-
-                        //         sh """
-                        //         curl -X POST \
-                        //         -H 'Content-type: application/json' \
-                        //         --data '${payload}' \
-                        //         ${SLACK_WEBHOOK}
-                        //         """
-                        //     }
-                        // }
+                        
                 }
                 failure {
                     echo 'I will run if failure'
