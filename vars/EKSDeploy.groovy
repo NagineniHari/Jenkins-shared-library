@@ -46,7 +46,7 @@ def call (Map configMap){
                            --set deployment.imageVersion=${appVersion} \
                            --wait \
                            --timeout=10m \
-                           --rollback-on-failure=false
+                           --rollback-on-failure=false .
                                 
                             """
                     }
